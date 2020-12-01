@@ -43,7 +43,7 @@ func problemTwo() {
 }
 
 func getNumbers() []int {
-	file, _ := os.Open("input.txt")
+	file, _ := os.Open("../input.txt")
 	defer file.Close()
 
 	var numbers []int
