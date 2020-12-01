@@ -1,9 +1,6 @@
 open System
 open System.IO
 
-let from whom =
-    sprintf "from %s" whom
-
 let strToInt str = int (str)
 
 let getLines (filePath: string) = seq { yield! File.ReadLines filePath }
