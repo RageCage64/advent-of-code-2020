@@ -8,6 +8,12 @@ import (
 )
 
 func main() {
+	problemOne()
+
+	problemTwo()
+}
+
+func problemOne() {
 	numbers := getNumbers()
 	numberSet := makeNumberSet(numbers)
 
@@ -15,7 +21,23 @@ func main() {
 		complement := 2020 - number
 		if _, ok := numberSet[complement]; ok {
 			fmt.Println(number * complement)
-			break
+			return
+		}
+	}
+}
+
+func problemTwo() {
+	numbers := getNumbers()
+	numberSet := makeNumberSet(numbers)
+
+	for i, numA := range numbers {
+		complement2sum := 2020 - numA
+		for _, numB := range numbers[i:] {
+			complement := complement2sum - numB
+			if _, ok := numberSet[complement]; ok {
+				fmt.Println(numA * numB * complement)
+				return
+			}
 		}
 	}
 }
