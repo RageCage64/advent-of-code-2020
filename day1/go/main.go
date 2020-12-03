@@ -7,6 +7,8 @@ import (
 	"strconv"
 )
 
+// Main procedures
+
 func main() {
 	problemOne()
 
@@ -41,6 +43,8 @@ func problemTwo() {
 		}
 	}
 }
+
+// Utility
 
 func getNumbers() []int {
 	file, _ := os.Open("../input.txt")
