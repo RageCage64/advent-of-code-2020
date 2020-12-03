@@ -87,12 +87,10 @@ func solve(part QuestionPart) {
 			if password.verifyPart1Policy() {
 				validPasswordCount++
 			}
-			break
 		case Part2:
 			if password.verifyPart2Policy() {
 				validPasswordCount++
 			}
-			break
 		}
 	}
 	fmt.Println(validPasswordCount)
