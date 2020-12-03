@@ -1,3 +1,4 @@
 bin
 obj
 day2/rust/main
+*.swp
