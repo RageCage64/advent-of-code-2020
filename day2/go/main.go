@@ -63,26 +63,36 @@ func (p *Password) verifyPart2Policy() bool {
 	return false
 }
 
+type QuestionPart int
+
+const (
+	Part1 QuestionPart = iota
+	Part2
+)
+
 // Main procedures
 
 func main() {
-	solve(true)
-	solve(false)
+	solve(Part1)
+	solve(Part2)
 }
 
-func solve(part1 bool) {
+func solve(part QuestionPart) {
 	passwords := getPasswords()
 
 	validPasswordCount := 0
 	for _, password := range passwords {
-		if part1 {
+		switch part {
+		case Part1:
 			if password.verifyPart1Policy() {
 				validPasswordCount++
 			}
-		} else {
+			break
+		case Part2:
 			if password.verifyPart2Policy() {
 				validPasswordCount++
 			}
+			break
 		}
 	}
 	fmt.Println(validPasswordCount)
