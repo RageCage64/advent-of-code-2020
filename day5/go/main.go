@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"math"
 	"os"
+	"sort"
 )
 
 const (
@@ -19,7 +20,7 @@ const (
 
 func main() {
 	input := readInput()
-	solvePart1(input)
+	solve(input)
 }
 
 func readInput() []string {
@@ -37,13 +38,10 @@ func readInput() []string {
 }
 
 func solvePart1(inputData []string) {
-	seatIds := make([]int, 0)
-
-	for _, line := range inputData {
-		seatIds = append(seatIds, getSeatId(line))
+	seatIds := make([]int, len(inputData))
+	for i, line := range inputData {
+		seatIds[i] = getSeatId(line)
 	}
-
-	fmt.Println(seatIds)
 
 	var maxId int
 	for _, seatId := range seatIds {
@@ -52,6 +50,17 @@ func solvePart1(inputData []string) {
 		}
 	}
 	fmt.Println(maxId)
+
+	sort.Ints(seatIds)
+	for i, seatId := range seatIds {
+		if i == 0 {
+			continue
+		}
+
+		if seatId-seatIds[i-1] > 1 {
+			fmt.Println(seatIds[i-1], seatId)
+		}
+	}
 }
 
 func getSeatId(line string) int {
@@ -59,9 +68,6 @@ func getSeatId(line string) int {
 	row = row * 8
 
 	col := BSP(line[7:], 0, Columns-1)
-	// fmt.Println(r)
-	// fmt.Println(r)
-	// fmt.Println(r)
 
 	return row + col
 }
